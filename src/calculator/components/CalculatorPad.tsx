@@ -20,7 +20,7 @@ export default function CalculatorPad() {
     }
 
     function clearDisplay(){
-        setDisplayValue(0);
+        setDisplayValue('0');
     }
     const CalculatorOperations = {
         '/': (prevValue: any, nextValue: any) => prevValue / nextValue,
@@ -48,7 +48,6 @@ export default function CalculatorPad() {
     }
 
     function inputDigit(digit: any){
-        const { displayValue, waitingForOperand } = this.state
         if (waitingForOperand) {
             setDisplayValue(String(digit));
             setWaitingForOperand(false);
