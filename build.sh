@@ -1,0 +1,1 @@
+sass src/theme/my-theme.scss -I node_modules/ > public/css/material-components-web.css
