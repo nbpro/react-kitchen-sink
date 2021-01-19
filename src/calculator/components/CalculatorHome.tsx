@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Context as CalculatorContext } from "../store";
-import CalculatorPad from "./CalculatorPad";
+import {CalculatorPad} from "./CalculatorPad";
 import CalculatorOutBox from "./CalculatorOutputBox";
 
 export const CalculatorBox = styled.div`
@@ -14,7 +14,6 @@ export default function CalculatorHome() {
     console.log(CalculatorStore);
     return (
         <CalculatorBox>
-            <CalculatorOutBox/>
             <CalculatorPad/>
         </CalculatorBox>
     );

@@ -7,13 +7,15 @@ export const CalculatorOutputBoxStyle= styled.div`
   padding: 0.5rem
 `;
 
-export default function CalculatorOutBox({output = `0`}) {
-    const [result, setResult] = useState(output);
+// @ts-ignore
+export default function CalculatorOutBox({output}) {
+    console.log(output);
+    // const [result, setResult] = useState(output);
     return (
         <CalculatorOutputBoxStyle>
             <Row>
                 <Col span={11}></Col>
-                <Col span={1}>{result}</Col>
+                <Col span={1}>{output}</Col>
             </Row>
         </CalculatorOutputBoxStyle>
     );
