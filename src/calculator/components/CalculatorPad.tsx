@@ -8,13 +8,28 @@ export const CalculatorNumericPad = styled.div`
 `;
 
 
- const CalculatorOperations = {
-    '/': ({prevValue, nextValue}: { prevValue: any, nextValue: any }) => prevValue / nextValue,
-    '*': ({prevValue, nextValue}: { prevValue: any, nextValue: any }) => prevValue * nextValue,
-    '+': ({prevValue, nextValue}: { prevValue: any, nextValue: any }) => prevValue + nextValue,
-    '-': ({prevValue, nextValue}: { prevValue: any, nextValue: any }) => prevValue - nextValue,
-    '=': ({prevValue, nextValue}: { prevValue: any, nextValue: any }) => nextValue
+export function CalculatorOperations(operationType: string, previousValue:number, nextvalue: number) {
+     switch (operationType){
+         case "+":
+             return previousValue + nextvalue;
+             break;
+         case "-":
+             return previousValue - nextvalue;
+             break;
+         case "*":
+             return previousValue * nextvalue;
+             break;
+         case "/":
+             return previousValue / nextvalue;
+             break;
+         case "=":
+             return nextvalue;
+             break;
+         default:
+             return null;
+     }
 }
+
 
 export function  CalculatorPad(){
 
@@ -22,7 +37,6 @@ export function  CalculatorPad(){
     const [displayValue, setDisplayValue] = useState('0');
     const [operator, setOperator] = useState(null);
     const [waitingForOperand, setWaitingForOperand]  = useState(true);
-    const [calStackTree, setCallStackTree] = useState([]);
 
     function  clearAll() {
         setValue(null);
@@ -34,14 +48,6 @@ export function  CalculatorPad(){
     function clearDisplay() {
         setDisplayValue('0');
     }
-
-    // clearLastChar() {
-    //     const { displayValue } = this.state
-    //
-    //     this.setState({
-    //         displayValue: displayValue.substring(0, displayValue.length - 1) || '0'
-    //     })
-    // }
 
     function handleInputValue(digit: number) {
         if (waitingForOperand) {
@@ -55,24 +61,21 @@ export function  CalculatorPad(){
     function  performOperation(nextOperator: string) {
         // const { value, displayValue, operator } = this.state
         const inputValue = parseFloat(displayValue)
-
         if (value == null) {
-            // this.setState({
-            //     value: inputValue
-            // });
             // @ts-ignore
             setValue(inputValue);
         } else if (operator) {
             const currentValue = value || 0
             // @ts-ignore
-            const newValue = CalculatorOperations[operator](currentValue, inputValue)
+            const newValue = CalculatorOperations(operator, currentValue, inputValue);
+            // @ts-ignore
             setValue(newValue);
             setDisplayValue(String(newValue));
         }
 
         setWaitingForOperand(true);
         // @ts-ignore
-        setWaitingForOperand(nextOperator);
+        setOperator(nextOperator);
     }
     return (
         <CalculatorNumericPad>
