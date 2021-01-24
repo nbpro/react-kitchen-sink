@@ -18,8 +18,8 @@
       "font": "Tinos"
     },
     "seaWave" : {
-      "id": "T_007",
-      "name": "Sea Wave",
+      "id": "T_002",
+      "name": "Dark Mode",
       "colors": {
         "body": "#9be7ff",
         "text": "#0d47a1",
@@ -32,7 +32,7 @@
           "opacity": 0.8
         }
       },
-      "font": "Ubuntu"
+      "font": "MacOs"
     }
   }
 }
