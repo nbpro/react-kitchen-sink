@@ -9,8 +9,6 @@ export const CalculatorOutputBoxStyle= styled.div`
 
 // @ts-ignore
 export default function CalculatorOutBox({output}) {
-    console.log(output);
-    // const [result, setResult] = useState(output);
     return (
         <CalculatorOutputBoxStyle>
             <Row>
